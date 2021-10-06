@@ -1,0 +1,11 @@
+﻿<h3>Grand Parent</h3>
+<CascadingValue Value="FirstPerson" Name="PersonFromGrandParent">
+    <CPParent></CPParent>
+</CascadingValue>
+
+@code {
+    public Person FirstPerson { get; set; } = new()
+    {
+        Name = "Person from grand parant component"
+    };
+}
