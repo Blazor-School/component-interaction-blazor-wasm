@@ -1,11 +1,26 @@
-﻿<h3>Grand Parent</h3>
-<CascadingValue Value="FirstPerson" Name="PersonFromGrandParent">
-    <CPParent></CPParent>
-</CascadingValue>
+﻿@page "/cascading-parameter"
+
+<div style="border: 5px solid red;">
+    <h3>Grand Parent</h3>
+    <div>Passing value using <code>CascadingValue</code>: @FirstPerson.Name</div>
+    <div>Passing value using <code>CascadingValue</code>: @SecondPerson.Name</div>
+    <div class="m-3">
+        <CascadingValue Value="FirstPerson" Name="GrandParentFirstPerson">
+            <CascadingValue Value="SecondPerson" Name="GrandParentSecondPerson">
+                <CPParent></CPParent>
+            </CascadingValue>
+        </CascadingValue>
+    </div>
+</div>
 
 @code {
     public Person FirstPerson { get; set; } = new()
     {
-        Name = "Person from grand parant component"
+        Name = "Person from grand parent component"
+    };
+
+    public Person SecondPerson { get; set; } = new()
+    {
+        Name = "Another person from grand parent component"
     };
 }

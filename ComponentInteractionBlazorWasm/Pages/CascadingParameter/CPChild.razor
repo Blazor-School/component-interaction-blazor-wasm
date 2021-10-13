@@ -1,7 +1,12 @@
-﻿<h3>Child</h3>
-<CPChild></CPChild>
+﻿<div style="border: 5px solid blue">
+    <h3>Child</h3>
+    <div>Received value: @Received1stPerson.Name</div>
+    <div>Received value: @Received2ndPerson.Name</div>
+</div>
 
 @code {
-    [CascadingParameter]
-    public Person ReceivedPerson { get; set; }
+    [CascadingParameter(Name = "GrandParentFirstPerson")]
+    public Person Received1stPerson { get; set; }
+    [CascadingParameter(Name = "GrandParentSecondPerson")]
+    public Person Received2ndPerson { get; set; }
 }

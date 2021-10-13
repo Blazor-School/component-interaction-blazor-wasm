@@ -1,0 +1,16 @@
+﻿@page "/parameter"
+
+<div style="border: 5px solid green">
+    <h3>PParent</h3>
+    <div>Passing Value using <code>Parameter</code>: @PersonInParentComponent.Name</div>
+    <div class="m-3">
+        <PChild ReceivingPerson="PersonInParentComponent"></PChild>
+    </div>
+</div>
+
+@code {
+    public Person PersonInParentComponent { get; set; } = new()
+    {
+        Name = "Person from the parent component."
+    };
+}
