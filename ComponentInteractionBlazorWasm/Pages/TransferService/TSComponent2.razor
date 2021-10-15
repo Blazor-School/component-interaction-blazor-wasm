@@ -5,7 +5,7 @@
 <div style="border: 5px solid green">
     <h3>TSComponent2</h3>
     <form>
-        <input @bind="GameTransferService.Game.Name"/>
+        <input @bind="GameTransferService.Game.Name" @bind:event="oninput"/>
     </form>
 </div>
 
