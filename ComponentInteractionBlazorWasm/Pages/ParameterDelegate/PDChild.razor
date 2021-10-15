@@ -1,0 +1,21 @@
+﻿<h3>PDChild</h3>
+<form>
+    <label>
+        Receiving Person:
+        <input type="text" value="@ReceivingPerson.Name" @oninput="ChangeOnReceivingPerson" />
+    </label>
+</form>
+
+@code {
+    [Parameter]
+    public Person ReceivingPerson { get; set; }
+
+    [Parameter]
+    public Action OnReceivingPersonChanged { get; set; }
+
+    private void ChangeOnReceivingPerson(ChangeEventArgs eventArgs)
+    {
+        ReceivingPerson.Name = eventArgs.Value as string;
+        OnReceivingPersonChanged?.Invoke();
+    }
+}

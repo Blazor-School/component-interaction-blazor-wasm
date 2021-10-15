@@ -1,0 +1,27 @@
+﻿@using ComponentInteractionBlazorWasm.TransferService
+@inject GameTransferService GameTransferService
+@implements IDisposable
+
+<div style="border: 5px solid green">
+    <h3>TSComponent2</h3>
+    <form>
+        <input @bind="GameTransferService.Game.Name"/>
+    </form>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        GameTransferService.Game.OnNameChanged += OnGameNameChanged;
+    }
+
+    private void OnGameNameChanged(object sender, string name)
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        GameTransferService.Game.OnNameChanged -= OnGameNameChanged;
+    }
+}

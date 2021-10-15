@@ -1,0 +1,28 @@
+﻿@using ComponentInteractionBlazorWasm.TransferService
+@inject GameTransferService GameTransferService
+@implements IDisposable
+
+<div style="border: 5px solid green">
+    <h3>TSParent</h3>
+    <div>Shared Game Name: @GameTransferService.Game.Name</div>
+    <div class="p-3">
+        <TSChild></TSChild>
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        GameTransferService.Game.OnNameChanged += OnGameNameChanged;
+    }
+
+    private void OnGameNameChanged(object sender, string name)
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        GameTransferService.Game.OnNameChanged -= OnGameNameChanged;
+    }
+}
